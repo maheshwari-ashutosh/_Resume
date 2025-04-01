@@ -1,0 +1,9 @@
+#Skills .skill {
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 1rem 1rem 0 0;  
+  /* border: 1px solid #e; */
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: #eee;
+}

@@ -1,0 +1,127 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem; /* Ensure base font size is consistent */
+  min-width: 320px;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  background-color: #eee;
+  padding: 2rem;
+  /* font-family: Arial, Helvetica, sans-serif */
+  font-family: 'nunito';
+  width: 100%;
+  min-height: 100vh;
+}
+
+.App {
+  width: 100%;
+  max-width: 210mm; /* Standard A4 width */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.column {
+  flex-flow: column;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.flex-wrap {
+  flex-wrap: wrap !important;
+}
+
+.justify-content-center {
+  justify-content: center !important;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
+}
+
+.print-page-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+  
+  body, html {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 210mm !important;
+    height: auto !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  .print-page-wrapper {
+    width: 210mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .print-button, .font-size-controls {
+    display: none !important;
+  }
+
+  .App {
+    padding: 0 !important;
+    width: 210mm !important;
+    max-width: 210mm !important;
+    margin: 0 !important;
+  }
+
+  #root {
+    width: 210mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: white !important;
+  }
+
+  #Resume {
+    width: 210mm !important;
+    margin: 0 auto !important;
+    padding: 5mm !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    page-break-inside: avoid !important;
+    max-height: none !important; /* Let it determine its own height based on content */
+    transform: none !important; /* Remove default scaling that interferes with font scaling */
+  }
+}
+
+/* Force elements to maintain sizing when new data is loaded */
+h1, h2, h3, h4, h5, h6, p, span, div {
+  max-width: 100%;
+}

@@ -1,0 +1,12 @@
+#Achievement > * {
+  margin: 1rem 0;
+}
+
+.achievement .title {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.achievement .detail {
+  font-size: 1.6rem;
+}

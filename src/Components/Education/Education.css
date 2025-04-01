@@ -1,0 +1,28 @@
+.educationCard {
+  margin-top: 1rem;
+}
+
+.educationCard > * {
+  margin: .5rem 0;
+}
+
+.educationCard .degreeName {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.educationCard .duration {
+  font-size: 1.4rem;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.educationCard .degree {
+  font-size: 1.6rem;
+  font-style: italic;
+}
+
+.educationCard .summary {
+  font-size: 1.4rem;
+  padding-left: 2rem;
+}

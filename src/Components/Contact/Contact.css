@@ -1,0 +1,22 @@
+#Contact {
+  /* border-bottom: 1px solid #eee; */
+}
+
+#Contact .contactTile {
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  color: black;
+}
+
+.contactTile a {
+  text-decoration: none;
+  color: black;
+}
+
+.contactTile:last-of-type {
+  margin-bottom: 1rem;
+}
+
+.contactTile i {
+  margin: 0 .5rem 0 0;
+}

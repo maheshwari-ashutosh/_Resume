@@ -1,0 +1,55 @@
+
+
+.experienceDetails {
+  margin: 0.5rem 0;
+  /* padding-left: 2rem; */
+  margin-bottom: 1.4rem;
+}
+
+.workExperienceCard .position {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.workExperienceCard .workItems.top-level {
+  padding-left: 2rem;
+}
+
+.workExperienceCard .workItems {
+  padding-left: 1rem;
+}
+
+.experienceDetails .companyName {
+  font-size: 2rem;
+  /* font-style: italic; */
+  font-weight: 700;
+}
+
+.experienceDetails .duration {
+  font-size: 1.4rem;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.experienceDetails .jobTitle {
+  font-size: 1.4rem;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.experienceDetails .workItems-Heading {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.experienceDetails .place {
+  font-size: 1.6rem;
+  text-align: end;
+}
+
+.experienceDetails ul {
+  /* list-style: none; */
+  font-size: 1.4rem;
+  font-weight: 500;
+}

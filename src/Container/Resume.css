@@ -1,0 +1,208 @@
+.resume-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.print-friendly {
+  width: 100%;
+  max-width: 210mm;
+  margin: 0 auto;
+}
+
+#Resume {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-height: auto; /* Allow natural height */
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 5px;
+  box-shadow: 0 0 100px rgba(0,0,0,.1);
+  display: flex;
+  flex-direction: column;
+  font-size: calc(1.6rem * var(--font-scale, 1));
+  margin: 0 auto;
+  box-sizing: border-box;
+  align-self: stretch;
+}
+
+#Resume h1 {
+  font-size: calc(2.6rem * var(--font-scale, 1));
+}
+
+#Resume h2 {
+  font-size: calc(2rem * var(--font-scale, 1));
+}
+
+#Resume h3 {
+  font-size: calc(1.8rem * var(--font-scale, 1));
+}
+
+#Resume p, #Resume li, #Resume span {
+  font-size: calc(1.4rem * var(--font-scale, 1));
+}
+
+.font-size-controls {
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+  position: relative;
+}
+
+.font-size-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0.5rem;
+  font-size: 1.2rem;
+  color: #333;
+  width: 2.4rem;
+  text-align: center;
+}
+
+.font-button {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  margin: 0 0.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+  font-size: 1.4rem;
+}
+
+.font-button:hover {
+  background-color: #5a6268;
+}
+
+.font-button i {
+  margin-right: 0.2rem;
+}
+
+@media print {
+  .resume-wrapper {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #Resume {
+    padding: 5mm;
+    box-shadow: none;
+    width: 100%;
+    min-height: auto;
+    border-radius: 0;
+    margin: 0;
+    overflow: visible;
+    page-break-inside: avoid;
+    /* Scale down slightly if needed */
+    transform: scale(0.98);
+    transform-origin: top center;
+  }
+}
+
+.resume-controls {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  font-size: 1.4rem;
+}
+
+.loading-container, 
+.error-container {
+  width: 100%;
+  padding: 4rem;
+  text-align: center;
+  font-size: 1.8rem;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 2rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.error-container {
+  color: #d32f2f;
+}
+
+@media print {
+  .resume-controls,
+  .loading-container,
+  .error-container {
+    display: none;
+  }
+  
+  /* Scale all font sizes for print while respecting user font scaling */
+  #Resume {
+    font-size: calc(9pt * var(--font-scale, var(--print-font-scale, 1)));
+    transform: none !important; /* Remove any transforms that could interfere */
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  #Resume h1 {
+    font-size: calc(16pt * var(--font-scale, var(--print-font-scale, 1)));
+  }
+  
+  #Resume h2 {
+    font-size: calc(14pt * var(--font-scale, var(--print-font-scale, 1)));
+  }
+  
+  #Resume h3 {
+    font-size: calc(12pt * var(--font-scale, var(--print-font-scale, 1)));
+  }
+  
+  #Resume p, #Resume li, #Resume span {
+    font-size: calc(9pt * var(--font-scale, var(--print-font-scale, 1)));
+  }
+}
+
+.print-now-button {
+  background-color: #ff5722;
+  margin-left: 1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+  font-size: 1.4rem;
+  color: white;
+}
+
+.print-now-button i {
+  font-size: 1.4rem;
+  margin-right: 0.5rem;
+}
+
+.print-now-button:hover {
+  background-color: #e64a19;
+}
+
+/* Use data attribute for font scaling as a fallback mechanism */
+.resume-wrapper[data-font-scale] #Resume {
+  --font-scale: attr(data-font-scale number, 1);
+}
+
+.print-button-custom {
+  background-color: #ff5722 !important;
+  margin: 1rem;
+}
+
+.print-button-custom:hover {
+  background-color: #e64a19 !important;
+}

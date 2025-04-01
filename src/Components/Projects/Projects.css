@@ -1,0 +1,12 @@
+.project {
+  margin-bottom: 0.5rem;
+}
+
+.project .title {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.project .detail {
+  font-size: 1.6rem;
+}

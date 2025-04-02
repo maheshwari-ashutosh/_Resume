@@ -2,22 +2,13 @@ import React from 'react';
 import './WorkExperience.css';
 import Heading from '../Heading/Heading';
 
-// Helper to extract year or return "Present"
-const getDisplayYear = (dateString) => {
+const getDisplayDate = (dateString) => {
   if (!dateString) return '';
   if (dateString.toLowerCase() === 'present') {
     return 'Present';
   }
-  const parts = dateString.trim().split(/\s+/);
-  if (parts.length === 2) {
-    const year = parseInt(parts[1], 10);
-    if (!isNaN(year)) {
-      return year.toString();
-    }
-  }
-  // Fallback: return original string if parsing failed
-  return dateString; 
-};
+  return dateString;
+}
 
 const WorkExperience = ({ data }) => {
   // data is expected to be a sorted array of [key, value] pairs
@@ -32,9 +23,10 @@ const WorkExperience = ({ data }) => {
         if (!workDetails) return null; // Skip if details are missing
         
         // Format dates for display
-        const fromYear = getDisplayYear(workDetails.fromDate);
-        const toYear = getDisplayYear(workDetails.toDate);
-        const displayDateRange = fromYear ? `${fromYear} - ${toYear}` : toYear; // Handle cases with only end date?
+        
+        const fromMonth = getDisplayDate(workDetails.fromDate);
+        const toMonth = getDisplayDate(workDetails.toDate);
+        const displayDateRange = fromMonth ? `${fromMonth} - ${toMonth} ` : `${toMonth}`; // Handle cases with only end date?
 
         return (
           // Use original class names expected by CSS

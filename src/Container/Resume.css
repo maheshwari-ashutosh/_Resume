@@ -9,8 +9,26 @@
   width: 100%;
   max-width: 210mm;
   margin: 0 auto;
+  transition: max-width 0.3s ease;
 }
 
+.with-editor {
+  max-width: 100%;
+}
+
+.content-wrapper {
+  display: flex;
+  position: relative;
+  width: 100%;
+  flex-wrap: nowrap; /* Prevent wrapping */
+  align-items: flex-start; /* Align items to the top */
+  margin-top: 1rem; /* Space below controls */
+  gap: 2rem; /* Gap between resume and form */
+  padding: 0 1rem; /* Add padding to prevent sticking to edges */
+  box-sizing: border-box;
+}
+
+/* Default view: Resume takes full width */
 #Resume {
   position: relative;
   width: 100%;
@@ -26,6 +44,22 @@
   margin: 0 auto;
   box-sizing: border-box;
   align-self: stretch;
+  transition: width 0.3s ease; /* Only transition width */
+}
+
+/* View when editor is open */
+.with-editor .content-wrapper {
+  justify-content: flex-start;
+  margin-top: 1rem;
+}
+
+.with-editor #Resume {
+  width: 60%;
+  margin: 0;
+}
+
+.with-editor .resume-controls {
+  width: 60%;
 }
 
 #Resume h1 {
@@ -47,7 +81,6 @@
 .font-size-controls {
   display: flex;
   align-items: center;
-  margin: 1rem;
   position: relative;
 }
 
@@ -62,62 +95,40 @@
   text-align: center;
 }
 
-.font-button {
-  background-color: #6c757d;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 0.5rem 1rem;
-  margin: 0 0.2rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s;
-  font-size: 1.4rem;
+.edit-button {
+  background-color: #2196F3;
+  margin-left: 1rem;
 }
 
-.font-button:hover {
-  background-color: #5a6268;
+.edit-button:hover {
+  background-color: #0b7dda;
 }
 
-.font-button i {
-  margin-right: 0.2rem;
+.print-button-custom {
+  background-color: #ff5722 !important;
+  margin-left: 1rem;
 }
 
-@media print {
-  .resume-wrapper {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  
-  #Resume {
-    padding: 5mm;
-    box-shadow: none;
-    width: 100%;
-    min-height: auto;
-    border-radius: 0;
-    margin: 0;
-    overflow: visible;
-    page-break-inside: avoid;
-    /* Scale down slightly if needed */
-    transform: scale(0.98);
-    transform-origin: top center;
-  }
+.print-button-custom:hover {
+  background-color: #e64a19 !important;
 }
 
 .resume-controls {
   display: flex;
   justify-content: center;
-  padding: 1.5rem;
+  align-items: center; 
+  padding: 1rem 1.5rem; 
   background-color: #f5f5f5;
   border-bottom: 1px solid #e0e0e0;
   position: sticky;
   top: 0;
   z-index: 100;
   width: 100%;
+  min-height: 60px; 
   font-size: 1.4rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  box-sizing: border-box;
 }
 
 .loading-container, 
@@ -142,6 +153,15 @@
   .error-container {
     display: none;
   }
+
+  .resume-form {
+    display: none;
+  }
+
+  .with-editor #Resume {
+    width: 100%;
+    margin-right: 0;
+  }
   
   /* Scale all font sizes for print while respecting user font scaling */
   #Resume {
@@ -149,6 +169,10 @@
     transform: none !important; /* Remove any transforms that could interfere */
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    margin: 0;
   }
   
   #Resume h1 {
@@ -168,29 +192,49 @@
   }
 }
 
-.print-now-button {
-  background-color: #ff5722;
-  margin-left: 1rem;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s;
-  font-size: 1.4rem;
-  color: white;
+@media (max-width: 1200px) {
+  .with-editor #Resume {
+    width: 50%; 
+  }
+  .resume-form {
+    width: 48%; /* Adjust to fit */
+  }
 }
 
-.print-now-button i {
-  font-size: 1.4rem;
-  margin-right: 0.5rem;
+@media (max-width: 900px) {
+   .content-wrapper {
+    flex-direction: column; 
+    align-items: center; 
+    gap: 1rem; /* Adjust gap for stacked view */
+  }
+  .with-editor #Resume {
+    width: 95%; 
+    margin-right: 0; /* Remove right margin */
+    order: 2; 
+  }
+  
+  .with-editor .resume-form {
+    display: block; /* Ensure it shows */
+    position: relative; /* Not sticky or fixed */
+    width: 95%; 
+    height: auto; 
+    max-height: 70vh; 
+    order: 1; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Adjust shadow */
+    border-left: none; /* Remove side border */
+    border-top: 1px solid #e0e0e0; /* Add top border */
+    margin-bottom: 1rem; 
+  }
 }
 
-.print-now-button:hover {
-  background-color: #e64a19;
+@media (max-width: 600px) {
+  .with-editor #Resume {
+    width: 100%;
+  }
+  .with-editor .resume-form {
+    width: 100%;
+    max-height: 80vh; /* Allow more height */
+  }
 }
 
 /* Use data attribute for font scaling as a fallback mechanism */
@@ -198,11 +242,20 @@
   --font-scale: attr(data-font-scale number, 1);
 }
 
-.print-button-custom {
-  background-color: #ff5722 !important;
-  margin: 1rem;
+/* Default: Hide form */
+.resume-form {
+  display: none;
+  width: 40%; /* Example: Adjust as needed */
+  flex-shrink: 0; /* Prevent shrinking */
+  height: calc(100vh - 80px); /* Max height, adjust 80px based on controls height + margin */
+  overflow-y: auto; /* Enable scrolling within the form */
+  background-color: white;
+  box-shadow: -3px 0 10px rgba(0, 0, 0, 0.1);
+  border-left: 1px solid #e0e0e0;
+  box-sizing: border-box;
 }
 
-.print-button-custom:hover {
-  background-color: #e64a19 !important;
+/* Show form when editor is active */
+.with-editor .resume-form {
+  display: block; /* Use block or flex depending on internal needs */
 }

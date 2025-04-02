@@ -1,9 +1,9 @@
 // Functions for handling template download and data upload
 
 // Download template function
-export const downloadTemplate = () => {
+export const downloadTemplate = (templateData) => {
   // Get the template structure from personalInfo.js
-  const template = {
+  const template = templateData ?? {
     headerInfo: {
       name: "Your Name",
       currentPosition: "Your Job Title",

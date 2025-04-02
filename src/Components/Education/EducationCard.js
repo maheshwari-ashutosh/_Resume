@@ -11,9 +11,7 @@ const EducationCard = (props) => {
     <div className='duration'>{degreeDetail.from} - {degreeDetail.to}</div>
     </div>
     <ul className='summary'>
-      {degreeDetail.summary.map((item, index) => {
-        return <li key={index}>{item}</li>
-      })}
+      {degreeDetail.summary}
     </ul>
   </div>;
 };

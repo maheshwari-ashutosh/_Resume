@@ -2,15 +2,16 @@ import React from 'react';
 import { downloadTemplate } from '../../Utility/TemplateHandler';
 import './DownloadTemplate.css';
 
-const DownloadTemplate = () => {
+const DownloadTemplate = (props) => {
+  const {templateData} = props;
   return (
     <div className="download-template-container">
       <button 
         className="download-button" 
-        onClick={downloadTemplate}
+        onClick={() => downloadTemplate(templateData)}
       >
         <i className="fa fa-download"></i>
-        Download Template
+        Save Data
       </button>
     </div>
   );

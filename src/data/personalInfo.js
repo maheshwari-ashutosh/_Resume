@@ -87,8 +87,8 @@ export const workExperience = {
 export const education = {
   "Degree Name": {
     name: "Institute Name",
-    from: "Date",
-    to: "Date",
+    from: "May 2018",
+    to: "May 2018",
     summary: ["GPA 9.5"],
   },
 };

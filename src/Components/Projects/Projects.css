@@ -1,12 +1,12 @@
-.project {
+.project-item {
   margin-bottom: 0.5rem;
 }
 
-.project .title {
+.project-item .title {
   font-size: 1.7rem;
   font-weight: 600;
 }
 
-.project .detail {
+.project-item .detail {
   font-size: 1.6rem;
 }

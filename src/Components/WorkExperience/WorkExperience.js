@@ -34,10 +34,12 @@ const WorkExperience = ({ data }) => {
             <div className='workExperienceCardHeading d-flex justify-space-between'>
               <div className='companyName'>{workDetails.companyName || companyKey}</div>
               {/* Use formatted date range */}
-              {displayDateRange && <div className='dateOfJoining duration'>{displayDateRange}</div>}
+              <div className='d-flex'>
+                {displayDateRange && <div className='dateOfJoining duration'>{displayDateRange}</div>}
+                {workDetails.place && <div className='dateOfJoining duration'>{", " + workDetails.place}</div>}
+              </div>
             </div>
             <div className='jobTitle'>{workDetails.jobTitle}</div>
-            {workDetails.place && <div className='jobLocation'>{workDetails.place}</div>}
             
             {workDetails.workItems && Array.isArray(workDetails.workItems) && workDetails.workItems.length > 0 && (
               <ul className='workDescription'>

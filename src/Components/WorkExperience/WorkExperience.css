@@ -54,3 +54,11 @@
   font-size: 1.4rem;
   font-weight: 500;
 }
+
+.workDescriptionItemHeading {
+  font-weight: 700;
+}
+
+.workDescriptionItemHeading li {
+  padding-left: 1rem;
+}

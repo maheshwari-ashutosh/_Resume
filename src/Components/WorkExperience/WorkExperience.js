@@ -28,6 +28,9 @@ const WorkExperience = ({ data }) => {
         const toMonth = getDisplayDate(workDetails.toDate);
         const displayDateRange = fromMonth ? `${fromMonth} - ${toMonth} ` : `${toMonth}`; // Handle cases with only end date?
 
+        let workItems = workDetails.workItems;
+        
+
         return (
           // Use original class names expected by CSS
           <div key={companyKey} className='workExperienceCard'>
@@ -43,10 +46,19 @@ const WorkExperience = ({ data }) => {
             
             {workDetails.workItems && Array.isArray(workDetails.workItems) && workDetails.workItems.length > 0 && (
               <ul className='workDescription'>
-                {workDetails.workItems.map((item, index) => (
-                  // Simple list items for now, can be enhanced later
-                  <li key={index}>{item}</li>
-                ))}
+                {
+                  workItems.map((item, index) => {
+                    if(item.includes(",")) {
+                      const items = item.split(",");
+                      return <li className='workDescriptionItemHeading'>{items[0]  }<ul>
+                        {items.slice(1).map((item, index) => (
+                          <li key={index}>{item}</li>
+                        ))}
+                      </ul></li>
+                    }
+                    return <li key={index}>{item}</li>;
+      })
+                }
               </ul>
             )}
           </div>
